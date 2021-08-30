@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "",
+        trackingId: "UA-206241791-1",
       },
     },
     "gatsby-plugin-react-helmet",
@@ -32,4 +32,4 @@ module.exports = {
       __key: "images",
     },
   ],
-};
+}
