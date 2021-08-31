@@ -6,6 +6,8 @@ import VerticalColumns from "./VerticalColumns"
 import Nav from "../Nav"
 import Footer from "../Footer"
 
+import Clay from "../../images/clay.png"
+
 const GlobalStyle = createGlobalStyle`
   ${reset};
 
@@ -55,6 +57,7 @@ const Layout = ({ children }) => {
       <Footer />
       <Signature>
         <h1>beny</h1>
+        <img src={Clay} alt="clay" />
       </Signature>
     </>
   )
@@ -79,7 +82,7 @@ const NoiseOverlay = styled.div`
 `
 
 const Signature = styled.div`
-  z-index: -10;
+  z-index: -1;
   position: fixed;
   right: 3vw;
   bottom: 2rem;
@@ -89,5 +92,14 @@ const Signature = styled.div`
     font-size: 20rem;
     font-weight: bold;
     color: lightslategray;
+  }
+
+  img {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 50rem;
   }
 `
