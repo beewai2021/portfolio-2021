@@ -6,25 +6,23 @@ const IndexPage = () => {
     <main>
       <Hero>
         <ProjectsSection>
-          <div>
-            <Project>
+          <Project>
+            <ProjectItem />
+          </Project>
+          <SmallProjects>
+            <Project small>
               <ProjectItem />
             </Project>
-            <SmallProjects>
-              <Project small>
-                <ProjectItem />
-              </Project>
-              <Project small>
-                <ProjectItem />
-              </Project>
-              <Project small>
-                <ProjectItem />
-              </Project>
-              <Project small>
-                <ProjectItem />
-              </Project>
-            </SmallProjects>
-          </div>
+            <Project small>
+              <ProjectItem />
+            </Project>
+            <Project small>
+              <ProjectItem />
+            </Project>
+            <Project small>
+              <ProjectItem />
+            </Project>
+          </SmallProjects>
         </ProjectsSection>
         <JobStatus>
           <Availability>NOT AVAILABLE FOR FULL TIME WORK</Availability>
@@ -188,24 +186,27 @@ const ProjectsSection = styled.section`
   position: relative;
   min-height: 100vh;
   width: var(--verticalBorders-xl);
-  padding-top: 4.5rem;
+  padding-top: 6vh;
 `
 
 const SmallProjects = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 1.5rem;
-  margin-top: 3.5rem;
+  margin-top: 2.73rem;
 `
 
 const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 6px;
 `
 
 const Project = styled.div`
-  height: ${({ small }) => (small ? "230px" : "450px")};
+  height: ${({ small }) =>
+    small
+      ? `calc(var(--verticalBorders-xl) / var(--projectAspectRatio) * 0.5)`
+      : `calc(var(--verticalBorders-xl) / var(--projectAspectRatio))`};
   width: 100%;
 
   ${({ small }) =>
@@ -219,7 +220,7 @@ const Project = styled.div`
 
 const JobStatus = styled.aside`
   position: relative;
-  margin-top: 7.5rem;
+  margin-top: 9.2vh;
   padding: 0.6rem 0.4rem 0.6rem 0;
   text-align: right;
 
@@ -252,8 +253,7 @@ const Bio = styled(Hero)`
 const Introduction = styled(ProjectsSection)`
   min-height: auto;
   padding-top: 0;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
+  transform: translateX(0.35rem);
 
   & > *:not(:last-child) {
     margin-bottom: 7.5rem;
@@ -268,12 +268,14 @@ const Introduction = styled(ProjectsSection)`
   p {
     margin-bottom: 1.4rem;
     font-size: 1.4rem;
+    width: 50%;
   }
 
   svg {
     margin-right: 0.3rem;
-    height: 1.5rem;
-    width: 1.5rem;
+    margin-bottom: 1.4rem;
+    height: 2.45rem;
+    width: 2.45rem;
   }
 `
 

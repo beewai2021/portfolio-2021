@@ -12,10 +12,11 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
 
   :root {
-    --bodyBackgroundColor: #fbfbfb;
+    --bodyBackgroundColor: white;
     --borderColor: rgba(0, 0, 0, 0.15);
     --maxWidth-xl: 1650px;
     --verticalBorders-xl: 800px;
+    --projectAspectRatio: calc(1920 / 1080);
   }
 
   *,
@@ -26,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-    /* font-size: 90%; // test ui scaling */
+    /* font-size: 85%; // test ui scaling */
     font-family: sans-serif;
   }
   
@@ -37,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: papayawhip;
   }
 
   a {

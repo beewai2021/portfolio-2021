@@ -2,16 +2,18 @@ import React from "react"
 import Clock from "react-live-clock"
 import styled, { css } from "styled-components"
 
+import HongKongFlag from "../../images/hong-kong.svg"
+
 const Nav = () => {
   return (
     <NavWrapper>
       <SectionWrapper>
         <div>UX / UI DESIGNER @ HEX TRUST</div>
         <div>
-          <span>IT'S&nbsp;</span>
           <Clock format={"LT"} ticking={true} timezone={"Asia/Hong_Kong"} />
-          <span>&nbsp;HERE IN HONG KONG</span>
+          <span>&nbsp; IN HONG KONG</span>
         </div>
+        <img src={HongKongFlag} alt="Hong Kong flag" />
       </SectionWrapper>
       <SectionWrapper>
         <SocialMediaLink
@@ -109,7 +111,13 @@ const SectionWrapper = styled.div`
   ${flex};
 
   & > *:not(:last-child) {
-    margin-right: 1.15rem;
+    margin-right: 1.13rem;
+  }
+
+  img {
+    display: block;
+    height: 1.35rem;
+    width: 1.35rem;
   }
 `
 
