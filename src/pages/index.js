@@ -1,25 +1,31 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
 
+import ProjectPopup from "../components/ProjectPopup"
+
 const IndexPage = () => {
+  const [openPopup, setPopup] = React.useState(false)
+  const togglePopup = () => setPopup((prev) => !prev)
+
   return (
     <main>
+      <ProjectPopup openPopup={openPopup} togglePopup={togglePopup} />
       <Hero>
         <ProjectsSection>
-          <Project>
+          <Project onClick={togglePopup}>
             <ProjectItem />
           </Project>
           <SmallProjects>
-            <Project small>
+            <Project small onClick={togglePopup}>
               <ProjectItem />
             </Project>
-            <Project small>
+            <Project small onClick={togglePopup}>
               <ProjectItem />
             </Project>
-            <Project small>
+            <Project small onClick={togglePopup}>
               <ProjectItem />
             </Project>
-            <Project small>
+            <Project small onClick={togglePopup}>
               <ProjectItem />
             </Project>
           </SmallProjects>
@@ -51,85 +57,85 @@ const IndexPage = () => {
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
@@ -151,12 +157,12 @@ const IndexPage = () => {
             </p>
             <p>
               My other interests include:
-              <ul>
-                <li>// Cryptocurrency</li>
-                <li>// Philosophy</li>
-                <li>// Product strategy</li>
-                <li>// Team management</li>
-              </ul>
+              <div>
+                <div>// Cryptocurrency</div>
+                <div>// Philosophy</div>
+                <div>// Product strategy</div>
+                <div>// Team management</div>
+              </div>
             </p>
           </div>
         </Introduction>
@@ -166,6 +172,20 @@ const IndexPage = () => {
           rel="noopener noreferrer"
         >
           Send me an email
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
         </EmailButton>
       </Bio>
     </main>
@@ -186,7 +206,6 @@ const ProjectsSection = styled.section`
   position: relative;
   min-height: 100vh;
   width: var(--verticalBorders-xl);
-  padding-top: 6vh;
 `
 
 const SmallProjects = styled.div`
@@ -200,6 +219,10 @@ const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
   border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const Project = styled.div`
@@ -220,7 +243,7 @@ const Project = styled.div`
 
 const JobStatus = styled.aside`
   position: relative;
-  margin-top: 9.2vh;
+  margin-top: 3.2vh;
   padding: 0.6rem 0.4rem 0.6rem 0;
   text-align: right;
 
@@ -280,12 +303,28 @@ const Introduction = styled(ProjectsSection)`
 `
 
 const EmailButton = styled.a`
+  position: relative;
   margin-top: 3.2rem;
-  padding: 1.6rem 3.3rem 1.6rem 1.4rem;
+  padding: 1.6rem 1.75rem 1.6rem 1.4rem;
   border: 1px solid var(--borderColor);
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.45);
   backdrop-filter: saturate(180%) blur(20px);
   font-size: 2.4rem;
   text-decoration-line: none;
+
+  &:hover {
+    svg {
+      transform: translateY(-50%) translateX(25%);
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: -0.7rem;
+    width: 1.85rem;
+    transform: translateY(-50%);
+    transition: 0.2s ease transform;
+  }
 `

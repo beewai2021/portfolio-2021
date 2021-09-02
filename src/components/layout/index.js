@@ -53,6 +53,7 @@ const Layout = ({ children }) => {
       <NoiseOverlay />
       <VerticalColumns />
       <Nav />
+      <VerticalGutter />
       {children}
       <Footer />
       <Signature>
@@ -79,6 +80,14 @@ const NoiseOverlay = styled.div`
   background-position: 0 0;
   background-size: 250px;
   opacity: 0.36;
+`
+
+const VerticalGutter = styled.div`
+  z-index: -1;
+  height: 6vh;
+  width: 100%;
+  background-color: transparent;
+  pointer-events: none;
 `
 
 const Signature = styled.div`
