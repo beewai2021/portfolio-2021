@@ -11,6 +11,9 @@ import Signature from "./Signature"
 const GlobalStyle = createGlobalStyle`
   ${reset};
 
+  /* TODO: add dark mode */
+  /* TODO: add reduced motion for clay video + project gifs */
+
   :root {
     --bodyBackgroundColor: white;
     --borderColor: rgba(0, 0, 0, 0.15);

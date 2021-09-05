@@ -3,8 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import { usePopupContext } from "../PopupProvider"
-
-import PROJECT_DATA from "../project_data"
+import { PROJECT_DATA } from "../project_data"
 
 const NotFoundPage = () => {
   const { changeProject } = usePopupContext()

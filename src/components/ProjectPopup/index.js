@@ -2,14 +2,20 @@ import React from "react"
 import styled, { css } from "styled-components"
 
 import { usePopupContext } from "../../PopupProvider"
-
-import PROJECT_DATA from "../../project_data"
+import { PROJECT_DATA } from "../../project_data"
 
 const ProjectPopup = () => {
   const { currentProject, popupOpen, togglePopup } = usePopupContext()
 
+  React.useEffect(() => {
+    popupOpen
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "initial")
+  }, [popupOpen])
+
   return popupOpen ? (
     <PopupContainer>
+      <PopupBackground onClick={togglePopup} />
       <Popup>
         <PopupWrapper>
           <CloseButton onClick={togglePopup}>
@@ -153,6 +159,18 @@ const PopupContainer = styled.main`
   place-items: center;
   background-color: rgba(0, 0, 0, 0.41);
   backdrop-filter: saturate(180%) blur(3.5px);
+`
+
+const PopupBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const Popup = styled.section`

@@ -1,12 +1,5 @@
 import React from "react"
 
-export const PROJECT_CONSTANTS = {
-  altair: 0,
-  pocketTrader: 1,
-  gameChanger: 2,
-  miqs: 3,
-}
-
 const initialState = {
   currentProject: 0,
   popupOpen: false,

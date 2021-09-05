@@ -1,7 +1,8 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
 
-import { usePopupContext, PROJECT_CONSTANTS } from "../PopupProvider"
+import { usePopupContext } from "../PopupProvider"
+import { PROJECT_CONSTANTS } from "../project_data"
 
 const IndexPage = () => {
   const { changeProject } = usePopupContext()
