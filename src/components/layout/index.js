@@ -2,11 +2,11 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import reset from "styled-reset"
 
+import ProjectPopup from "../ProjectPopup"
 import VerticalColumns from "./VerticalColumns"
 import Nav from "../Nav"
 import Footer from "../Footer"
-
-import Clay from "../../images/clay.png"
+import Signature from "./Signature"
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -51,15 +51,13 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
       <NoiseOverlay />
+      <ProjectPopup />
       <VerticalColumns />
       <Nav />
       <VerticalGutter />
       {children}
       <Footer />
-      <Signature>
-        <h1>beny</h1>
-        <img src={Clay} alt="clay" />
-      </Signature>
+      <Signature />
     </>
   )
 }
@@ -88,27 +86,4 @@ const VerticalGutter = styled.div`
   width: 100%;
   background-color: transparent;
   pointer-events: none;
-`
-
-const Signature = styled.div`
-  z-index: -1;
-  position: fixed;
-  right: 3vw;
-  bottom: 2rem;
-  pointer-events: none;
-
-  h1 {
-    font-size: 20rem;
-    font-weight: bold;
-    color: lightslategray;
-  }
-
-  img {
-    z-index: -1;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 50rem;
-  }
 `

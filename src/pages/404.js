@@ -2,7 +2,16 @@ import * as React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+import { usePopupContext } from "../PopupProvider"
+
+import PROJECT_DATA from "../project_data"
+
 const NotFoundPage = () => {
+  const { changeProject } = usePopupContext()
+
+  const projectLength = PROJECT_DATA.projects.length - 1
+  const randomProject = Math.floor(Math.random() * (projectLength - 0 + 1) + 0)
+
   return (
     <main>
       <Section>
@@ -13,7 +22,7 @@ const NotFoundPage = () => {
             of my projects:
           </p>
           <Project>
-            <ProjectItem />
+            <ProjectItem onClick={() => changeProject(randomProject)} />
           </Project>
           <p>Or you can head home–</p>
           <Link to="/">
@@ -77,6 +86,10 @@ const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
   border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const HomeButton = styled.button`

@@ -1,0 +1,76 @@
+{
+  "projects": [
+    {
+     "id": 0, 
+     "name": "Altair Studio Teaser Website",
+     "description": "",
+     "company": {
+       "name": "Altair Studio",
+       "logo": ""
+      },
+     "timeline": {
+       "year": 2020,
+       "duration": "3 month project"
+     },
+     "urls": {
+       "writeup": "",
+       "live": "https://altair-studio.com"
+     },
+     "role": ""
+    },
+    {
+     "id": 1, 
+     "name": "Pocket Trader Website",
+     "description": "",
+     "company": {
+       "name": "Pocket Trader",
+       "logo": ""
+      },
+     "timeline": {
+       "year": 2020,
+       "duration": "3 month project"
+     },
+     "urls": {
+       "writeup": "https://www.behance.net/gallery/106105979/Website-for-trading-app-with-social-features",
+       "live": "https://pocket-trader.com"
+     },
+     "role": ""
+    },
+    {
+     "id": 2, 
+     "name": "Game Changer Website",
+     "description": "",
+     "company": {
+      "name": "Game Changer",
+      "logo": ""
+     },
+     "timeline": {
+       "year": 2020,
+       "duration": "3 month project"
+     },
+     "urls": {
+       "writeup": "https://www.behance.net/gallery/105975539/GC-Showcase-Website",
+       "live": "https://gamechangeryacht.com"
+     },
+     "role": ""
+    },
+    {
+     "id": 3, 
+     "name": "Self Study Capstone Project",
+     "description": "",
+     "company": {
+      "name": "MIQS",
+      "logo": ""
+     },
+     "timeline": {
+       "year": 2020,
+       "duration": "3 month project"
+     },
+     "urls": {
+       "writeup": "https://www.behance.net/gallery/106630213/MIQS-Concept-Website",
+       "live": ""
+     },
+     "role": ""
+    }
+  ]
+}

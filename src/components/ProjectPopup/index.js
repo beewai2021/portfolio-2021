@@ -1,66 +1,83 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-const ProjectPopup = ({ openPopup, togglePopup }) => {
-  return (
-    openPopup && (
-      <PopupContainer>
-        <Popup>
-          <PopupWrapper>
-            <CloseButton onClick={togglePopup}>
+import { usePopupContext } from "../../PopupProvider"
+
+import PROJECT_DATA from "../../project_data"
+
+const ProjectPopup = () => {
+  const { currentProject, popupOpen, togglePopup } = usePopupContext()
+
+  return popupOpen ? (
+    <PopupContainer>
+      <Popup>
+        <PopupWrapper>
+          <CloseButton onClick={togglePopup}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </CloseButton>
+          <Projects>
+            <Project>
+              <ProjectItem />
+            </Project>
+            <Project>
+              <ProjectItem />
+            </Project>
+            <Project>
+              <ProjectItem />
+            </Project>
+          </Projects>
+          <ProjectDescription>
+            <h1>{PROJECT_DATA.projects[currentProject].name}</h1>
+            <p>
+              Atque ab magni a veniam quod. Earum deleniti debitis qui. Dolor
+              tempore mollitia aut aliquam. Doloremque nulla facilis quia
+              quisquam. Molestiae dolorem provident magnam debitis. Corporis
+              quaerat id possimus voluptatem laudantium provident.
+            </p>
+            <Company>
+              <span>For</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+                <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
               </svg>
-            </CloseButton>
-            <Projects>
-              <Project>
-                <ProjectItem />
-              </Project>
-              <Project>
-                <ProjectItem />
-              </Project>
-              <Project>
-                <ProjectItem />
-              </Project>
-            </Projects>
-            <ProjectDescription>
-              <h1>Project Name</h1>
-              <p>
-                Atque ab magni a veniam quod. Earum deleniti debitis qui. Dolor
-                tempore mollitia aut aliquam. Doloremque nulla facilis quia
-                quisquam. Molestiae dolorem provident magnam debitis. Corporis
-                quaerat id possimus voluptatem laudantium provident.
-              </p>
-              <Company>
-                <span>For</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
-                </svg>
-              </Company>
-              <Date>
-                <span>2020</span>
+              <span>{PROJECT_DATA.projects[currentProject].company.name}</span>
+            </Company>
+            <Date>
+              <Time>
+                <span>
+                  {PROJECT_DATA.projects[currentProject].timeline.year}
+                </span>
                 <span>·</span>
-                <span>3 MONTH PROJECT</span>
-                <Line />
-              </Date>
-              <ProjectLinks>
-                <a href="">
+                <span>
+                  {PROJECT_DATA.projects[currentProject].timeline.duration}
+                </span>
+              </Time>
+              <Line />
+            </Date>
+            <ProjectLinks>
+              {PROJECT_DATA.projects[currentProject].urls.writeup && (
+                <a
+                  href={PROJECT_DATA.projects[currentProject].urls.writeup}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span>PROJECT WRITEUP</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +94,13 @@ const ProjectPopup = ({ openPopup, togglePopup }) => {
                     />
                   </svg>
                 </a>
-                <a href="">
+              )}
+              {PROJECT_DATA.projects[currentProject].urls.live && (
+                <a
+                  href={PROJECT_DATA.projects[currentProject].urls.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span>SEE IT LIVE</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -94,22 +117,22 @@ const ProjectPopup = ({ openPopup, togglePopup }) => {
                     />
                   </svg>
                 </a>
-              </ProjectLinks>
-              <p>
-                Sosum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </ProjectDescription>
-          </PopupWrapper>
-        </Popup>
-      </PopupContainer>
-    )
-  )
+              )}
+            </ProjectLinks>
+            <p>
+              Sosum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </ProjectDescription>
+        </PopupWrapper>
+      </Popup>
+    </PopupContainer>
+  ) : null
 }
 
 export default ProjectPopup
@@ -213,6 +236,12 @@ const Date = styled.div`
   ${flex};
   margin: 1.2rem 0;
   font-size: 1.33rem;
+`
+
+const Time = styled.div`
+  & > span:not(:last-of-type) {
+    padding-right: 0.28rem;
+  }
 `
 
 const Line = styled.div`

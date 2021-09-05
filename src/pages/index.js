@@ -1,32 +1,38 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
 
-import ProjectPopup from "../components/ProjectPopup"
+import { usePopupContext, PROJECT_CONSTANTS } from "../PopupProvider"
 
 const IndexPage = () => {
-  const [openPopup, setPopup] = React.useState(false)
-  const togglePopup = () => setPopup((prev) => !prev)
+  const { changeProject } = usePopupContext()
 
   return (
     <main>
-      <ProjectPopup openPopup={openPopup} togglePopup={togglePopup} />
       <Hero>
         <ProjectsSection>
-          <Project onClick={togglePopup}>
+          <Project>
             <ProjectItem />
           </Project>
           <SmallProjects>
-            <Project small onClick={togglePopup}>
-              <ProjectItem />
+            <Project small>
+              <ProjectItem
+                onClick={() => changeProject(PROJECT_CONSTANTS.altair)}
+              />
             </Project>
-            <Project small onClick={togglePopup}>
-              <ProjectItem />
+            <Project small>
+              <ProjectItem
+                onClick={() => changeProject(PROJECT_CONSTANTS.pocketTrader)}
+              />
             </Project>
-            <Project small onClick={togglePopup}>
-              <ProjectItem />
+            <Project small>
+              <ProjectItem
+                onClick={() => changeProject(PROJECT_CONSTANTS.gameChanger)}
+              />
             </Project>
-            <Project small onClick={togglePopup}>
-              <ProjectItem />
+            <Project small>
+              <ProjectItem
+                onClick={() => changeProject(PROJECT_CONSTANTS.miqs)}
+              />
             </Project>
           </SmallProjects>
         </ProjectsSection>
@@ -155,15 +161,15 @@ const IndexPage = () => {
             <p>
               I’m currently learning three.js, GSAP, motion design, and more.
             </p>
-            <p>
+            <div>
               My other interests include:
-              <div>
-                <div>// Cryptocurrency</div>
-                <div>// Philosophy</div>
-                <div>// Product strategy</div>
-                <div>// Team management</div>
-              </div>
-            </p>
+              <ul>
+                <li>// Cryptocurrency</li>
+                <li>// Philosophy</li>
+                <li>// Product strategy</li>
+                <li>// Team management</li>
+              </ul>
+            </div>
           </div>
         </Introduction>
         <EmailButton

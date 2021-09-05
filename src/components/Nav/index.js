@@ -59,7 +59,7 @@ const Nav = () => {
           </svg>
         </SocialMediaLink>
         <SocialMediaLink
-          href="https://www.behance.net/beewai"
+          href="https://behance.net/beewai"
           target="_blank"
           rel="noopener noreferrer"
         >
