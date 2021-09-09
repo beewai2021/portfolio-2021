@@ -43,9 +43,18 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  img {
+    display: block;
+  }
+
   a {
     font: inherit;
     color: inherit;
+  }
+
+  ::selection {
+    background: #1F2937;
+    color: #F9FAFB;
   }
 `
 
@@ -57,9 +66,11 @@ const Layout = ({ children }) => {
       <ProjectPopup />
       <VerticalColumns />
       <Nav />
-      <VerticalGutter />
-      {children}
-      <Footer />
+      <MainContent>
+        <VerticalGutter />
+        {children}
+        <Footer />
+      </MainContent>
       <Signature />
     </>
   )
@@ -81,6 +92,23 @@ const NoiseOverlay = styled.div`
   background-position: 0 0;
   background-size: 250px;
   opacity: 0.36;
+`
+
+const MainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* vertical gutter & footer */
+  & > *:first-child,
+  & > *:last-child {
+    flex-shrink: 0;
+  }
+
+  /* main content */
+  & > *:nth-child(2) {
+    flex-grow: 1;
+  }
 `
 
 const VerticalGutter = styled.div`

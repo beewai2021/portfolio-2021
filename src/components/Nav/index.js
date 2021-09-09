@@ -103,7 +103,7 @@ const NavWrapper = styled.nav`
   padding: 0.7rem 1.3rem;
   background-color: rgba(255, 255, 255, 0.45);
   backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--borderColor);
+  /* border-bottom: 1px solid var(--borderColor); */
   font-weight: bold;
 `
 

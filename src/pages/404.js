@@ -1,9 +1,10 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 import { usePopupContext } from "../PopupProvider"
 import { PROJECT_DATA } from "../project_data"
+
+import ButtonLink from "../components/Button"
 
 const NotFoundPage = () => {
   const { changeProject } = usePopupContext()
@@ -24,25 +25,7 @@ const NotFoundPage = () => {
             <ProjectItem onClick={() => changeProject(randomProject)} />
           </Project>
           <p>Or you can head home–</p>
-          <Link to="/">
-            <HomeButton>
-              Back to homepage
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </HomeButton>
-          </Link>
+          <ButtonLink internalLink url={"/"} text={"Back to homepage"} />
         </Container>
       </Section>
     </main>
@@ -84,38 +67,8 @@ const Project = styled.div`
 const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
-  border-radius: 6px;
 
   &:hover {
     cursor: pointer;
-  }
-`
-
-const HomeButton = styled.button`
-  position: relative;
-  width: max-content;
-  padding: 1.6rem 1.75rem 1.6rem 1.4rem;
-  border: 1px solid var(--borderColor);
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: saturate(180%) blur(20px);
-  font-size: 2.4rem;
-  text-decoration-line: none;
-
-  &:hover {
-    cursor: pointer;
-
-    svg {
-      transform: translateY(-50%) translateX(25%);
-    }
-  }
-
-  svg {
-    position: absolute;
-    top: 50%;
-    right: -0.7rem;
-    width: 1.85rem;
-    transform: translateY(-50%);
-    transition: 0.2s ease transform;
   }
 `

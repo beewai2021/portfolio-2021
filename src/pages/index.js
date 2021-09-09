@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
+import ButtonLink from "../components/Button"
 
 import { usePopupContext } from "../PopupProvider"
 import { PROJECT_CONSTANTS } from "../project_data"
@@ -12,8 +13,15 @@ const IndexPage = () => {
       <Hero>
         <ProjectsSection>
           <Project>
-            <ProjectItem />
+            <CurrentProjectItem>
+              <h1>Currently building crypto things at</h1>
+              <img
+                src="https://ftahk.org/sites/default/files/company-logo/HEX_TRUST%20LOGO_RGB%20(3).png"
+                alt="Hex Trust logo"
+              />
+            </CurrentProjectItem>
           </Project>
+          <PreviousProjects>Previous Projects</PreviousProjects>
           <SmallProjects>
             <Project small>
               <ProjectItem
@@ -48,14 +56,16 @@ const IndexPage = () => {
       <Bio>
         <Introduction>
           <div>
-            <h1>Who am I?</h1>
+            <h1>Who</h1>
+            <h1>am I?</h1>
             <p>
               I’m a self-taught product designer and front-end web developer
-              with a lot of fire to burn and heart to share.
+              with a lot of passion to learn and heart to share.
             </p>
           </div>
           <div>
-            <h1>What can I do for you?</h1>
+            <h1>What</h1>
+            <h1>can I do for you?</h1>
             <p>
               Product design, for web and/or mobile, product strategy and
               direction, what’s on your mind?
@@ -148,13 +158,14 @@ const IndexPage = () => {
               </svg>
             </div>
             <p>
-              in Hong Kong and mainland China. Interacted in fluent English,
-              普通话, and 廣東話, and worked with bright individuals from
-              different countries and cultural backgrounds.
+              in places like Hong Kong and mainland China. Interacted in fluent
+              English, 普通话, 廣東話, and worked with brilliant individuals
+              from various countries and cultural backgrounds.
             </p>
           </div>
           <div>
-            <h1>How can I benefit you?</h1>
+            <h1>How</h1>
+            <h1>can I benefit you?</h1>
             <p>
               My technical expertise includes, but is not limited to: Sketch,
               Invision, ReactJS, CSS, front-end design and development.
@@ -173,26 +184,12 @@ const IndexPage = () => {
             </div>
           </div>
         </Introduction>
-        <EmailButton
-          href="mailto: b.yeung2018@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Send me an email
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
+        <EmailButton>
+          <ButtonLink
+            internalLink={false}
+            url={"mailto: b.yeung2018@gmail.com"}
+            text={"Send me an email"}
+          />
         </EmailButton>
       </Bio>
     </main>
@@ -215,20 +212,44 @@ const ProjectsSection = styled.section`
   width: var(--verticalBorders-xl);
 `
 
+const PreviousProjects = styled.h1`
+  margin: 2.7rem 0 1.3rem 0;
+  font-size: 2.3rem;
+  font-weight: bold;
+`
+
 const SmallProjects = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 1.5rem;
-  margin-top: 2.73rem;
 `
 
 const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
-  border-radius: 6px;
 
   &:hover {
     cursor: pointer;
+  }
+`
+
+const CurrentProjectItem = styled(ProjectItem)`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+
+  h1 {
+    margin-bottom: 0.34rem;
+    font-size: 3rem;
+  }
+
+  img {
+    width: 25rem;
+  }
+
+  &:hover {
+    cursor: default;
   }
 `
 
@@ -250,7 +271,7 @@ const Project = styled.div`
 
 const JobStatus = styled.aside`
   position: relative;
-  margin-top: 3.2vh;
+  margin-top: 5.25vh;
   padding: 0.6rem 0.4rem 0.6rem 0;
   text-align: right;
 
@@ -309,29 +330,6 @@ const Introduction = styled(ProjectsSection)`
   }
 `
 
-const EmailButton = styled.a`
-  position: relative;
+const EmailButton = styled.div`
   margin-top: 3.2rem;
-  padding: 1.6rem 1.75rem 1.6rem 1.4rem;
-  border: 1px solid var(--borderColor);
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: saturate(180%) blur(20px);
-  font-size: 2.4rem;
-  text-decoration-line: none;
-
-  &:hover {
-    svg {
-      transform: translateY(-50%) translateX(25%);
-    }
-  }
-
-  svg {
-    position: absolute;
-    top: 50%;
-    right: -0.7rem;
-    width: 1.85rem;
-    transform: translateY(-50%);
-    transition: 0.2s ease transform;
-  }
 `

@@ -5,7 +5,8 @@ import { usePopupContext } from "../../PopupProvider"
 import { PROJECT_DATA } from "../../project_data"
 
 const ProjectPopup = () => {
-  const { currentProject, popupOpen, togglePopup } = usePopupContext()
+  const { currentProject, popupOpen, nextProject, togglePopup } =
+    usePopupContext()
 
   React.useEffect(() => {
     popupOpen
@@ -13,27 +14,35 @@ const ProjectPopup = () => {
       : (document.body.style.overflow = "initial")
   }, [popupOpen])
 
+  React.useEffect(() => {
+    const ESCAPE_KEY = 27
+    const detectEscKey = (e) => e.keyCode === ESCAPE_KEY && togglePopup()
+    window.addEventListener("keydown", detectEscKey)
+    return () => window.removeEventListener("keydown", detectEscKey)
+  }, [])
+
   return popupOpen ? (
     <PopupContainer>
       <PopupBackground onClick={togglePopup} />
       <Popup>
+        <CloseButton>
+          <svg
+            onClick={togglePopup}
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </CloseButton>
         <PopupWrapper>
-          <CloseButton onClick={togglePopup}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </CloseButton>
           <Projects>
             <Project>
               <ProjectItem />
@@ -134,6 +143,7 @@ const ProjectPopup = () => {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
+            <button onClick={nextProject}>Next Project</button>
           </ProjectDescription>
         </PopupWrapper>
       </Popup>
@@ -179,7 +189,6 @@ const Popup = styled.section`
   width: 96.5%;
   max-width: var(--maxWidth-xl);
   margin: 0 auto;
-  padding: 0 7.5rem;
   overflow-y: scroll;
   border-radius: 22px;
   background-color: white;
@@ -190,22 +199,28 @@ const Popup = styled.section`
 const PopupWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: flex-start;
   grid-column-gap: 5.5rem;
-  padding: 6.7rem 0;
+  margin: 1.85rem 0 7.5rem 0;
+  padding: 0 7.5rem;
 `
 
 const CloseButton = styled.div`
-  position: absolute;
-  top: 0.36rem;
-  right: 0.36rem;
-
-  &:hover {
-    cursor: pointer;
-  }
+  position: sticky;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.35rem;
+  padding-right: 0.35rem;
 
   svg {
     width: 5.5rem;
     stroke: darkgray;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `
 
@@ -221,12 +236,13 @@ const Project = styled.div`
 
 const ProjectItem = styled.div`
   height: 100%;
-  border-radius: 6px;
   border: 1px solid black;
 `
 
-const ProjectDescription = styled.aside`
-  margin-top: 4.2rem;
+const ProjectDescription = styled.article`
+  position: sticky;
+  top: 0;
+  padding-top: 6.3rem;
 
   h1 {
     margin-bottom: 3.8rem;

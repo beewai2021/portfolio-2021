@@ -1,13 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-import Clay from "../../images/clay.png"
-
 const Signature = () => {
   return (
     <Container>
-      <h1>beny</h1>
-      <img src={Clay} alt="clay" />
+      <h1>BENY</h1>
+      <div />
     </Container>
   )
 }
@@ -23,16 +21,17 @@ const Container = styled.div`
 
   h1 {
     font-size: 20rem;
-    font-weight: bold;
-    color: lightslategray;
+    font-weight: light;
+    color: var(--borderColor);
   }
 
-  img {
+  div {
     z-index: -1;
     position: absolute;
     right: 0;
     bottom: 0;
-    display: block;
+    height: 50rem;
     width: 50rem;
+    border: 1px solid var(--borderColor);
   }
 `

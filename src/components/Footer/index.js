@@ -13,7 +13,8 @@ const Footer = () => {
 export default Footer
 
 const FooterContainer = styled.footer`
-  max-width: var(--maxWidth-xl);
   margin: 20vh auto 1.65rem auto;
-  padding: 0 0.8rem;
+  max-width: var(--maxWidth-xl);
+  width: 100%;
+  padding: 0 0.35rem;
 `

@@ -1,9 +1,11 @@
 import React from "react"
+import { PROJECT_DATA } from "../project_data"
 
 const initialState = {
   currentProject: 0,
   popupOpen: false,
   changeProject: () => {},
+  nextProject: () => {},
   togglePopup: () => {},
 }
 
@@ -13,7 +15,14 @@ const popupReducer = (state, action) => {
     case "CHANGE_PROJECT":
       return {
         currentProject: action.payload,
-        popUpOpen: !state.popUpOpen ? true : false,
+        popUpOpen: !state.popUpOpen && true,
+      }
+    //s switch to next project
+    case "NEXT_PROJECT":
+      return {
+        ...state,
+        currentProject:
+          (state.currentProject + 1) % PROJECT_DATA.projects.length,
       }
     // open/close popup
     case "TOGGLE_POPUP":
@@ -38,6 +47,12 @@ const PopupProvider = ({ children }) => {
     })
   }
 
+  const nextProject = () => {
+    dispatch({
+      type: "NEXT_PROJECT",
+    })
+  }
+
   const togglePopup = () => {
     dispatch({
       type: "TOGGLE_POPUP",
@@ -48,6 +63,7 @@ const PopupProvider = ({ children }) => {
     currentProject: state.currentProject,
     popupOpen: state.popUpOpen,
     changeProject,
+    nextProject,
     togglePopup,
   }
 
