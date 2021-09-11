@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     --borderColor: rgba(0, 0, 0, 0.15);
     --maxWidth-xl: 1650px;
     --verticalBorders-xl: 800px;
-    --projectAspectRatio: calc(1920 / 1080);
+    --projectAspectRatio: calc(1440 / 1024);
   }
 
   *,
@@ -43,8 +43,16 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  img {
+  img,
+  video {
     display: block;
+  }
+
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
   }
 
   a {

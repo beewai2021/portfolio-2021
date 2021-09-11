@@ -44,15 +44,20 @@ const ProjectPopup = () => {
         </CloseButton>
         <PopupWrapper>
           <Projects>
-            <Project>
-              <ProjectItem />
-            </Project>
-            <Project>
-              <ProjectItem />
-            </Project>
-            <Project>
-              <ProjectItem />
-            </Project>
+            {PROJECT_DATA.projects[currentProject].videos.map(
+              (videoUrl, index) => {
+                return (
+                  <Project key={index}>
+                    <video
+                      src={videoUrl}
+                      muted
+                      autoPlay={index === 0 ? true : false}
+                      loop
+                    />
+                  </Project>
+                )
+              }
+            )}
           </Projects>
           <ProjectDescription>
             <h1>{PROJECT_DATA.projects[currentProject].name}</h1>
@@ -226,17 +231,16 @@ const CloseButton = styled.div`
 
 const Projects = styled.div`
   & > *:not(:last-child) {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.25rem;
   }
 `
 
 const Project = styled.div`
-  height: calc(var(--verticalBorders-xl) / var(--projectAspectRatio));
-`
-
-const ProjectItem = styled.div`
-  height: 100%;
-  border: 1px solid black;
+  height: calc(
+    ((var(--maxWidth-xl) - (7.5rem * 2) - 55px) / 2) /
+      (var(--projectAspectRatio))
+  );
+  background-color: #f3f4f6;
 `
 
 const ProjectDescription = styled.article`
