@@ -4,6 +4,8 @@ import styled, { css } from "styled-components"
 import { usePopupContext } from "../../PopupProvider"
 import { PROJECT_DATA } from "../../project_data"
 
+import Video from "./Video"
+
 const ProjectPopup = () => {
   const { currentProject, popupOpen, nextProject, togglePopup } =
     usePopupContext()
@@ -48,12 +50,7 @@ const ProjectPopup = () => {
               (videoUrl, index) => {
                 return (
                   <Project key={index}>
-                    <video
-                      src={videoUrl}
-                      muted
-                      autoPlay={index === 0 ? true : false}
-                      loop
-                    />
+                    <Video index={index} url={videoUrl} />
                   </Project>
                 )
               }
