@@ -1,34 +1,29 @@
 import React from "react"
-import ReactPlayer from "react-player"
 import styled from "styled-components"
 
 const Video = ({ url, index }) => {
-  const vidRef = React.useRef(null)
+  const ref = React.useRef(null)
 
-  const [vidReady, setVidReady] = React.useState(false)
-  const [vidPlaying, setVidPlaying] = React.useState(false)
+  const [loaded, setLoaded] = React.useState(false)
 
-  const handlePlayPause = () => setVidPlaying((prev) => !prev)
+  const togglePlayback = () => {
+    if (ref.current) {
+      ref.current.paused ? ref.current.play() : ref.current.pause()
+    }
+  }
 
   return (
     <VideoContainer>
-      <ReactPlayer
-        ref={vidRef}
-        url={url}
-        loop={index === 0 ? true : false}
-        muted={true}
-        playing={vidPlaying}
-        onReady={() => setVidReady(true)}
-        onPlay={() => setVidPlaying(true)}
-        onPause={() => setVidPlaying(false)}
-        height="100%"
-        width="100%"
+      <video
+        key={url}
+        ref={ref}
+        src={url}
+        muted
+        playsInline
+        autoPlay={index === 0 ? true : false}
+        onCanPlay={() => setLoaded(true)}
       />
-      {vidReady && (
-        <Button onClick={handlePlayPause}>
-          {vidPlaying ? "Pause" : "Play"}
-        </Button>
-      )}
+      {loaded && <Button onClick={togglePlayback}>PLAYBACK</Button>}
     </VideoContainer>
   )
 }
@@ -42,8 +37,6 @@ const VideoContainer = styled.div`
 
   video {
     transform: scale(1.01);
-    transform-origin: center;
-    border: 2px solid red;
   }
 `
 
