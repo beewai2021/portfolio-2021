@@ -1,48 +1,34 @@
 import React from "react"
+import ReactPlayer from "react-player"
 import styled from "styled-components"
 
-const Video = ({ index, url }) => {
-  const [playing, setPlaying] = React.useState(undefined)
+const Video = ({ url, index }) => {
+  const vidRef = React.useRef(null)
 
-  const videoRef = React.useRef()
+  const [vidReady, setVidReady] = React.useState(false)
+  const [vidPlaying, setVidPlaying] = React.useState(false)
 
-  const togglePlayback = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play()
-        setPlaying(true)
-      } else {
-        videoRef.current.pause()
-        setPlaying(false)
-      }
-    }
-  }
-
-  React.useEffect(() => {
-    const setPlaybackTrue = () => setPlaying(true)
-    const setPlaybackFalse = () => setPlaying(false)
-
-    videoRef.current.addEventListener("play", setPlaybackTrue)
-    videoRef.current.addEventListener("pause", setPlaybackFalse)
-
-    return () => {
-      videoRef.current &&
-        videoRef.current.removeEventListener("play", setPlaybackTrue)
-      videoRef.current &&
-        videoRef.current.removeEventListener("pause", setPlaybackFalse)
-    }
-  }, [videoRef])
+  const handlePlayPause = () => setVidPlaying((prev) => !prev)
 
   return (
     <VideoContainer>
-      <video
-        ref={videoRef}
-        src={url}
-        muted
-        autoPlay={index === 0 ? true : false}
+      <ReactPlayer
+        ref={vidRef}
+        url={url}
         loop={index === 0 ? true : false}
+        muted={true}
+        playing={vidPlaying}
+        onReady={() => setVidReady(true)}
+        onPlay={() => setVidPlaying(true)}
+        onPause={() => setVidPlaying(false)}
+        height="100%"
+        width="100%"
       />
-      <Button onClick={togglePlayback}>{playing ? "PAUSE" : "PLAY"}</Button>
+      {vidReady && (
+        <Button onClick={handlePlayPause}>
+          {vidPlaying ? "Pause" : "Play"}
+        </Button>
+      )}
     </VideoContainer>
   )
 }
@@ -52,6 +38,13 @@ export default Video
 const VideoContainer = styled.div`
   position: relative;
   height: 100%;
+  overflow: hidden;
+
+  video {
+    transform: scale(1.01);
+    transform-origin: center;
+    border: 2px solid red;
+  }
 `
 
 const Button = styled.button`

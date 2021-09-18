@@ -15,10 +15,7 @@ const IndexPage = () => {
           <Project>
             <CurrentProjectItem>
               <h1>Currently building crypto things at</h1>
-              <img
-                src="https://ftahk.org/sites/default/files/company-logo/HEX_TRUST%20LOGO_RGB%20(3).png"
-                alt="Hex Trust logo"
-              />
+              <h1>Hex Trust</h1>
             </CurrentProjectItem>
           </Project>
           <PreviousProjects>Previous Projects</PreviousProjects>
@@ -242,10 +239,6 @@ const CurrentProjectItem = styled(ProjectItem)`
   h1 {
     margin-bottom: 0.34rem;
     font-size: 3rem;
-  }
-
-  img {
-    width: 25rem;
   }
 
   &:hover {
