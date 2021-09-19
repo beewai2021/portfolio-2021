@@ -7,8 +7,13 @@ import { PROJECT_DATA } from "../../project_data"
 import Video from "./Video"
 
 const ProjectPopup = ({ reduceMotion }) => {
-  const { currentProject, popupOpen, nextProject, togglePopup } =
-    usePopupContext()
+  const {
+    currentProject,
+    popupOpen,
+    previousProject,
+    nextProject,
+    togglePopup,
+  } = usePopupContext()
 
   React.useEffect(() => {
     popupOpen
@@ -18,9 +23,25 @@ const ProjectPopup = ({ reduceMotion }) => {
 
   React.useEffect(() => {
     const ESCAPE_KEY = 27
-    const detectEscKey = (e) => e.keyCode === ESCAPE_KEY && togglePopup()
-    window.addEventListener("keydown", detectEscKey)
-    return () => window.removeEventListener("keydown", detectEscKey)
+    const LEFT_KEY = 37
+    const RIGHT_KEY = 39
+
+    const detectKey = (e) => {
+      switch (e.keyCode) {
+        case ESCAPE_KEY:
+          togglePopup()
+          break
+        case LEFT_KEY:
+          previousProject()
+          break
+        case RIGHT_KEY:
+          nextProject()
+          break
+      }
+    }
+
+    window.addEventListener("keydown", detectKey)
+    return () => window.removeEventListener("keydown", detectKey)
   }, [])
 
   return popupOpen ? (
@@ -149,6 +170,7 @@ const ProjectPopup = ({ reduceMotion }) => {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
+            <button onClick={previousProject}>Previous Project</button>
             <button onClick={nextProject}>Next Project</button>
           </ProjectDescription>
         </PopupWrapper>

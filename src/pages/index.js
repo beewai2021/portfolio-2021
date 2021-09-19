@@ -14,8 +14,11 @@ const IndexPage = () => {
         <ProjectsSection>
           <Project>
             <CurrentProjectItem>
-              <h1>Currently building crypto things at</h1>
-              <h1>Hex Trust</h1>
+              <h1>Currently building crypto things at Hex Trust</h1>
+              <img
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/36d235fc-bcb4-4e71-91e0-7dd17f206728/deg2wgf-b4ee9bde-47c6-4be5-b40d-aee055f5325a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM2ZDIzNWZjLWJjYjQtNGU3MS05MWUwLTdkZDE3ZjIwNjcyOFwvZGVnMndnZi1iNGVlOWJkZS00N2M2LTRiZTUtYjQwZC1hZWUwNTVmNTMyNWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.93_IBMoQ8k8zbadrJwUuwW8oHO6C-8HvZ8aBWMqYb8I"
+                alt="coffee steaming gif"
+              />
             </CurrentProjectItem>
           </Project>
           <PreviousProjects>Previous Projects</PreviousProjects>
@@ -239,6 +242,10 @@ const CurrentProjectItem = styled(ProjectItem)`
   h1 {
     margin-bottom: 0.34rem;
     font-size: 3rem;
+  }
+
+  img {
+    width: 9rem;
   }
 
   &:hover {

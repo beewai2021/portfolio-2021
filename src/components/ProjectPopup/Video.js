@@ -103,14 +103,14 @@ const Button = styled.button`
   bottom: 2rem;
   right: 2rem;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #acaaab;
   border: none;
   border-radius: 0.8rem;
 
   svg {
     height: 3.5rem;
     width: 3.5rem;
-    stroke: white;
+    stroke: #3d3b3b;
   }
 
   &:hover {

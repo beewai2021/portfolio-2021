@@ -5,6 +5,7 @@ const initialState = {
   currentProject: 0,
   popupOpen: false,
   changeProject: () => {},
+  previousProject: () => {},
   nextProject: () => {},
   togglePopup: () => {},
 }
@@ -17,7 +18,16 @@ const popupReducer = (state, action) => {
         currentProject: action.payload,
         popUpOpen: !state.popUpOpen && true,
       }
-    //s switch to next project
+    // switch to prev project
+    case "PREV_PROJECT":
+      return {
+        ...state,
+        currentProject:
+          state.currentProject === 0
+            ? PROJECT_DATA.projects.length - 1
+            : state.currentProject - 1,
+      }
+    // switch to next project
     case "NEXT_PROJECT":
       return {
         ...state,
@@ -47,6 +57,12 @@ const PopupProvider = ({ children }) => {
     })
   }
 
+  const previousProject = () => {
+    dispatch({
+      type: "PREV_PROJECT",
+    })
+  }
+
   const nextProject = () => {
     dispatch({
       type: "NEXT_PROJECT",
@@ -63,6 +79,7 @@ const PopupProvider = ({ children }) => {
     currentProject: state.currentProject,
     popupOpen: state.popUpOpen,
     changeProject,
+    previousProject,
     nextProject,
     togglePopup,
   }
