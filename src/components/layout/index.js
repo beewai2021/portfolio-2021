@@ -2,6 +2,8 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import reset from "styled-reset"
 
+import useReduceMotion from "../../hooks/useReduceMotion"
+
 import ProjectPopup from "../ProjectPopup"
 import VerticalColumns from "./VerticalColumns"
 import Nav from "../Nav"
@@ -10,9 +12,6 @@ import Signature from "./Signature"
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-
-  /* TODO: add dark mode */
-  /* TODO: add reduced motion for clay video + project gifs */
 
   :root {
     --bodyBackgroundColor: white;
@@ -67,11 +66,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children }) => {
+  const reduceMotion = useReduceMotion()
+
   return (
     <>
       <GlobalStyle />
       <NoiseOverlay />
-      <ProjectPopup />
+      <ProjectPopup reduceMotion={reduceMotion} />
       <VerticalColumns />
       <Nav />
       <MainContent>

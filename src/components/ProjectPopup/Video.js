@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const Video = ({ url, index }) => {
+const Video = ({ index, url, reduceMotion }) => {
   const vidRef = React.useRef(null)
 
   const [loaded, setLoaded] = React.useState(false)
@@ -38,7 +38,7 @@ const Video = ({ url, index }) => {
         src={url}
         muted
         playsInline
-        autoPlay={index === 0 ? true : false}
+        autoPlay={index === 0 && !reduceMotion ? true : false}
         onCanPlay={() => setLoaded(true)}
       />
       {loaded && (

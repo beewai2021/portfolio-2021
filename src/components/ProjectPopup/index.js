@@ -6,7 +6,7 @@ import { PROJECT_DATA } from "../../project_data"
 
 import Video from "./Video"
 
-const ProjectPopup = () => {
+const ProjectPopup = ({ reduceMotion }) => {
   const { currentProject, popupOpen, nextProject, togglePopup } =
     usePopupContext()
 
@@ -50,7 +50,11 @@ const ProjectPopup = () => {
               (videoUrl, index) => {
                 return (
                   <Project key={index}>
-                    <Video index={index} url={videoUrl} />
+                    <Video
+                      index={index}
+                      url={videoUrl}
+                      reduceMotion={reduceMotion}
+                    />
                   </Project>
                 )
               }
