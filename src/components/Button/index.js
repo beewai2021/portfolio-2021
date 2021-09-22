@@ -44,6 +44,7 @@ const Button = styled.button`
     top: 50%;
     right: -0.7rem;
     width: 1.85rem;
+    pointer-events: none;
     transform: translateY(-50%);
     transition: 0.2s ease transform;
   }

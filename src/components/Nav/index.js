@@ -125,8 +125,9 @@ const SocialMediaLink = styled.a`
   ${flex};
 
   svg {
-    margin-left: 0.3rem;
     height: 1.5rem;
     width: 1.5rem;
+    margin-left: 0.3rem;
+    pointer-events: none;
   }
 `

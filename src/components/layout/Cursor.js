@@ -8,6 +8,7 @@ const Cursor = () => {
   const [position, setPosition] = React.useState({ x: 0, y: 0 })
   const [hide, setHide] = React.useState(false)
   const [click, setClick] = React.useState(false)
+  const [linkHover, setLinkHover] = React.useState(false)
 
   const location = useLocation()
 
@@ -19,12 +20,30 @@ const Cursor = () => {
   const mouseDown = () => setClick(true)
   const mouseUp = () => setClick(false)
 
+  const mouseOver = () => setLinkHover(true)
+  const mouseOff = () => setLinkHover(false)
+
+  const addLinkHover = () => {
+    document.body.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("mouseover", mouseOver)
+      link.addEventListener("mouseout", mouseOff)
+    })
+  }
+
+  const removeLinkHover = () => {
+    document.body.querySelectorAll("a").forEach((link) => {
+      link.removeEventListener("mouseover", mouseOver)
+      link.removeEventListener("mouseout", mouseOff)
+    })
+  }
+
   const addListeners = () => {
     document.body.addEventListener("mousemove", updatePosition)
     document.body.addEventListener("mouseenter", mouseEnter)
     document.body.addEventListener("mouseleave", mouseLeave)
     document.body.addEventListener("mousedown", mouseDown)
     document.body.addEventListener("mouseup", mouseUp)
+    addLinkHover()
   }
 
   const removeListeners = () => {
@@ -33,6 +52,7 @@ const Cursor = () => {
     document.body.removeEventListener("mouseleave", mouseLeave)
     document.body.removeEventListener("mousedown", mouseDown)
     document.body.removeEventListener("mouseup", mouseUp)
+    removeLinkHover()
   }
 
   React.useEffect(() => {
@@ -48,6 +68,7 @@ const Cursor = () => {
       }}
       hide={hide}
       click={click}
+      linkHover={linkHover}
     >
       <img src={Heart} alt="cursor heart" />
     </CursorContainer>
@@ -63,13 +84,28 @@ const CursorContainer = styled.div`
   user-select: none;
   height: 45px;
   width: 45px;
-  transform: ${(props) =>
-    props.click
-      ? "translate(-50%, -50%) scale(0.9)"
-      : "translate(-50%, -50%) scale(1)"};
-  opacity: ${(props) => (props.hide ? 0 : 1)};
+  opacity: ${({ hide, linkHover }) => {
+    switch (true) {
+      case hide:
+        return 0
+      case linkHover:
+        return 0.2
+      default:
+        return 1
+    }
+  }};
+  transform: ${({ click, linkHover }) => {
+    switch (true) {
+      case click:
+        return "translate(-50%, -50%) scale(0.88)"
+      case linkHover:
+        return "translate(-50%, -50%) scale(1.65)"
+      default:
+        return "translate(-50%, -50%) scale(1)"
+    }
+  }};
   transition: all ease 0.15s;
-  transition-property: opacity;
+  transition-property: opacity, transform;
 
   img {
     height: 100%;
