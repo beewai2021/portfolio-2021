@@ -30,33 +30,25 @@ const Cursor = () => {
     })
   }
 
-  const removeLinkHover = () => {
-    document.body.querySelectorAll("a").forEach((link) => {
-      link.removeEventListener("mouseover", mouseOver)
-      link.removeEventListener("mouseout", mouseOff)
-    })
-  }
-
-  const addListeners = () => {
+  const addListeners = React.useCallback(() => {
     document.body.addEventListener("mousemove", updatePosition)
     document.body.addEventListener("mouseenter", mouseEnter)
     document.body.addEventListener("mouseleave", mouseLeave)
     document.body.addEventListener("mousedown", mouseDown)
     document.body.addEventListener("mouseup", mouseUp)
-    addLinkHover()
-  }
+  }, [])
 
-  const removeListeners = () => {
+  const removeListeners = React.useCallback(() => {
     document.body.removeEventListener("mousemove", updatePosition)
     document.body.removeEventListener("mouseenter", mouseEnter)
     document.body.removeEventListener("mouseleave", mouseLeave)
     document.body.removeEventListener("mousedown", mouseDown)
     document.body.removeEventListener("mouseup", mouseUp)
-    removeLinkHover()
-  }
+  })
 
   React.useEffect(() => {
     addListeners()
+    addLinkHover()
     return () => removeListeners()
   }, [location])
 
@@ -80,10 +72,10 @@ export default Cursor
 const CursorContainer = styled.div`
   z-index: 3;
   position: fixed;
-  pointer-events: none;
-  user-select: none;
   height: 45px;
   width: 45px;
+  pointer-events: none;
+  user-select: none;
   opacity: ${({ hide, linkHover }) => {
     switch (true) {
       case hide:
