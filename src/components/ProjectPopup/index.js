@@ -61,7 +61,7 @@ const ProjectPopup = ({ reduceMotion }) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              d="M6 18L18 6M6 6l12 12"
             />
           </svg>
         </CloseButton>
@@ -205,23 +205,19 @@ const PopupBackground = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 const Popup = styled.section`
   position: relative;
-  height: 93%;
+  height: 94.5%;
   width: 96.5%;
   max-width: var(--maxWidth-xl);
   margin: 0 auto;
   overflow-y: scroll;
-  border-radius: 22px;
-  background-color: white;
+  background-color: #1f1f1f;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  color: white;
 `
 
 const PopupWrapper = styled.div`
@@ -245,10 +241,6 @@ const CloseButton = styled.div`
   svg {
     width: 5.5rem;
     stroke: darkgray;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 `
 
@@ -263,7 +255,7 @@ const Project = styled.div`
     ((var(--maxWidth-xl) - (7.5rem * 2) - 55px) / 2) /
       (var(--projectAspectRatio))
   );
-  background-color: #f3f4f6;
+  background-color: #2f2f2f;
 `
 
 const ProjectDescription = styled.article`

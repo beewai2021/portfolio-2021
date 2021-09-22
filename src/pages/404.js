@@ -67,8 +67,4 @@ const Project = styled.div`
 const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
-
-  &:hover {
-    cursor: pointer;
-  }
 `

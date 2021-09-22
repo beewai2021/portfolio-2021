@@ -1,9 +1,12 @@
 import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
+import { Helmet } from "react-helmet"
 import reset from "styled-reset"
+import { isMobile } from "react-device-detect"
 
 import useReduceMotion from "../../hooks/useReduceMotion"
 
+import Cursor from "./Cursor"
 import ProjectPopup from "../ProjectPopup"
 import VerticalColumns from "./VerticalColumns"
 import Nav from "../Nav"
@@ -14,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
 
   :root {
-    --bodyBackgroundColor: white;
+    --bodyBackgroundColor: antiquewhite;
     --borderColor: rgba(0, 0, 0, 0.15);
     --maxWidth-xl: 1650px;
     --verticalBorders-xl: 800px;
@@ -27,10 +30,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body {
+    cursor: none;
+  }
+
   html {
     font-size: 62.5%;
     /* font-size: 85%; // test ui scaling */
-    font-family: sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
   }
   
   body {
@@ -54,9 +61,12 @@ const GlobalStyle = createGlobalStyle`
     object-position: 50% 50%;
   }
 
-  a {
+  a, button {
+    border: inherit;
+    background: inherit;
     font: inherit;
     color: inherit;
+    cursor: inherit;
   }
 
   ::selection {
@@ -70,8 +80,17 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <GlobalStyle />
       <NoiseOverlay />
+      {!isMobile && <Cursor />}
       <ProjectPopup reduceMotion={reduceMotion} />
       <VerticalColumns />
       <Nav />

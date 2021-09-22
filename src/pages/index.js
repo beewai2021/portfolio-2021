@@ -16,8 +16,8 @@ const IndexPage = () => {
             <CurrentProjectItem>
               <h1>Currently building crypto things at Hex Trust</h1>
               <img
-                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/36d235fc-bcb4-4e71-91e0-7dd17f206728/deg2wgf-b4ee9bde-47c6-4be5-b40d-aee055f5325a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM2ZDIzNWZjLWJjYjQtNGU3MS05MWUwLTdkZDE3ZjIwNjcyOFwvZGVnMndnZi1iNGVlOWJkZS00N2M2LTRiZTUtYjQwZC1hZWUwNTVmNTMyNWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.93_IBMoQ8k8zbadrJwUuwW8oHO6C-8HvZ8aBWMqYb8I"
-                alt="coffee steaming gif"
+                src="https://media0.giphy.com/media/1g1H4WB8iLHSprAuIN/giphy.gif?cid=790b7611448a8b5360b9927cad9dfc9a69e9205199c6dac6&rid=giphy.gif&ct=s"
+                alt="thinking gif"
               />
             </CurrentProjectItem>
           </Project>
@@ -56,16 +56,14 @@ const IndexPage = () => {
       <Bio>
         <Introduction>
           <div>
-            <h1>Who</h1>
-            <h1>am I?</h1>
+            <h1>Who am I?</h1>
             <p>
               I’m a self-taught product designer and front-end web developer
               with a lot of passion to learn and heart to share.
             </p>
           </div>
           <div>
-            <h1>What</h1>
-            <h1>can I do for you?</h1>
+            <h1>What can I do for you?</h1>
             <p>
               Product design, for web and/or mobile, product strategy and
               direction, what’s on your mind?
@@ -164,8 +162,7 @@ const IndexPage = () => {
             </p>
           </div>
           <div>
-            <h1>How</h1>
-            <h1>can I benefit you?</h1>
+            <h1>How can I benefit you?</h1>
             <p>
               My technical expertise includes, but is not limited to: Sketch,
               Invision, ReactJS, CSS, front-end design and development.
@@ -214,7 +211,7 @@ const ProjectsSection = styled.section`
 
 const PreviousProjects = styled.h1`
   margin: 2.7rem 0 1.3rem 0;
-  font-size: 2.3rem;
+  font-size: 1.93rem;
   font-weight: bold;
 `
 
@@ -227,10 +224,6 @@ const SmallProjects = styled.div`
 const ProjectItem = styled.div`
   height: 100%;
   border: 1px solid black;
-
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 const CurrentProjectItem = styled(ProjectItem)`
@@ -241,15 +234,11 @@ const CurrentProjectItem = styled(ProjectItem)`
 
   h1 {
     margin-bottom: 0.34rem;
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 
   img {
-    width: 9rem;
-  }
-
-  &:hover {
-    cursor: default;
+    width: 6.5rem;
   }
 `
 

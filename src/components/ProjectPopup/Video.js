@@ -112,8 +112,4 @@ const Button = styled.button`
     width: 3.5rem;
     stroke: #3d3b3b;
   }
-
-  &:hover {
-    cursor: pointer;
-  }
 `

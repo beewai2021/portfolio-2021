@@ -28,14 +28,12 @@ const Button = styled.button`
   padding: 1.6rem 1.75rem 1.6rem 1.4rem;
   border: 1px solid var(--borderColor);
   border-radius: 0.8rem;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: saturate(180%) blur(20px);
   font-size: 2.4rem;
   text-decoration-line: none;
 
   &:hover {
-    cursor: pointer;
-
     svg {
       transform: translateY(-50%) translateX(25%);
     }

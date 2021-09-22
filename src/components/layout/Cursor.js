@@ -1,0 +1,78 @@
+import React from "react"
+import styled from "styled-components"
+import { useLocation } from "@reach/router"
+
+import Heart from "../../images/heart.png"
+
+const Cursor = () => {
+  const [position, setPosition] = React.useState({ x: 0, y: 0 })
+  const [hide, setHide] = React.useState(false)
+  const [click, setClick] = React.useState(false)
+
+  const location = useLocation()
+
+  const updatePosition = (e) => setPosition({ x: e.clientX, y: e.clientY })
+
+  const mouseEnter = () => setHide(false)
+  const mouseLeave = () => setHide(true)
+
+  const mouseDown = () => setClick(true)
+  const mouseUp = () => setClick(false)
+
+  const addListeners = () => {
+    document.body.addEventListener("mousemove", updatePosition)
+    document.body.addEventListener("mouseenter", mouseEnter)
+    document.body.addEventListener("mouseleave", mouseLeave)
+    document.body.addEventListener("mousedown", mouseDown)
+    document.body.addEventListener("mouseup", mouseUp)
+  }
+
+  const removeListeners = () => {
+    document.body.removeEventListener("mousemove", updatePosition)
+    document.body.removeEventListener("mouseenter", mouseEnter)
+    document.body.removeEventListener("mouseleave", mouseLeave)
+    document.body.removeEventListener("mousedown", mouseDown)
+    document.body.removeEventListener("mouseup", mouseUp)
+  }
+
+  React.useEffect(() => {
+    addListeners()
+    return () => removeListeners()
+  }, [location])
+
+  return (
+    <CursorContainer
+      style={{
+        top: `${position.y}px`,
+        left: `${position.x}px`,
+      }}
+      hide={hide}
+      click={click}
+    >
+      <img src={Heart} alt="cursor heart" />
+    </CursorContainer>
+  )
+}
+
+export default Cursor
+
+const CursorContainer = styled.div`
+  z-index: 3;
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  height: 45px;
+  width: 45px;
+  transform: ${(props) =>
+    props.click
+      ? "translate(-50%, -50%) scale(0.9)"
+      : "translate(-50%, -50%) scale(1)"};
+  opacity: ${(props) => (props.hide ? 0 : 1)};
+  transition: all ease 0.15s;
+  transition-property: opacity;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+`

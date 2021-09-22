@@ -5,7 +5,12 @@ const Signature = () => {
   return (
     <Container>
       <h1>BENY</h1>
-      <div />
+      <div>
+        <img
+          src="https://static.wixstatic.com/media/7e85a2_3e1070d3f9764098ad9a115fa408c222~mv2.gif"
+          alt="camp fire"
+        />
+      </div>
     </Container>
   )
 }
@@ -20,9 +25,8 @@ const Container = styled.div`
   pointer-events: none;
 
   h1 {
-    font-size: 20rem;
+    font-size: 8.5rem;
     font-weight: light;
-    color: var(--borderColor);
   }
 
   div {
@@ -32,6 +36,11 @@ const Container = styled.div`
     bottom: 0;
     height: 50rem;
     width: 50rem;
-    border: 1px solid var(--borderColor);
+    opacity: 0.5;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 `
