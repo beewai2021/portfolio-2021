@@ -276,7 +276,7 @@ const JobStatus = styled.aside`
   }
 `
 
-const Availability = styled.div`
+const Availability = styled.h3`
   font-size: 1.2rem;
   font-weight: bold;
 `

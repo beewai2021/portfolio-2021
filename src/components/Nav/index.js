@@ -8,11 +8,11 @@ const Nav = () => {
   return (
     <NavWrapper>
       <SectionWrapper>
-        <div>UX / UI DESIGNER @ HEX TRUST</div>
-        <div>
+        <h3>UX / UI DESIGNER @ HEX TRUST</h3>
+        <h3>
           <Clock format={"LT"} ticking={true} timezone={"Asia/Hong_Kong"} />
           <span>&nbsp; IN HONG KONG</span>
-        </div>
+        </h3>
         <img src={HongKongFlag} alt="Hong Kong flag" />
       </SectionWrapper>
       <SectionWrapper>

@@ -16,6 +16,11 @@ import Signature from "./Signature"
 const GlobalStyle = createGlobalStyle`
   ${reset};
 
+  @font-face {
+    font-family: 'DroidSansMono';
+    src: url('/fonts/DroidSansMono.ttf');
+  };
+
   :root {
     --bodyBackgroundColor: antiquewhite;
     --borderColor: rgba(0, 0, 0, 0.15);
@@ -37,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
     /* font-size: 85%; // test ui scaling */
-    font-family: 'Press Start 2P', sans-serif;
+    font-family: 'DroidSansMono', sans-serif;
   }
   
   body {
@@ -47,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h3 {
+    font-family: 'Press Start 2P', sans-serif;
   }
 
   img,
@@ -65,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
     border: inherit;
     background: inherit;
     font: inherit;
+    font-family: 'Press Start 2P', sans-serif;
     color: inherit;
     cursor: inherit;
   }
