@@ -36,6 +36,7 @@ const Video = ({ index, url, reduceMotion }) => {
         key={url}
         ref={vidRef}
         src={url}
+        preload="metadata"
         muted
         playsInline
         autoPlay={index === 0 && !reduceMotion ? true : false}

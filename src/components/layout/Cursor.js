@@ -49,6 +49,7 @@ const Cursor = () => {
   React.useEffect(() => {
     addListeners()
     addLinkHover()
+
     return () => removeListeners()
   }, [location])
 
