@@ -8,6 +8,7 @@ module.exports = {
     title: "Portfolio 2021",
   },
   plugins: [
+    "gatsby-plugin-use-dark-mode",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",

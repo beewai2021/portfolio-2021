@@ -244,9 +244,9 @@ const CurrentProjectItem = styled(ProjectItem)`
 
 const Project = styled.div`
   height: ${({ small }) =>
-    small
-      ? `calc(var(--verticalBorders-xl) / var(--projectAspectRatio) * 0.5)`
-      : `calc(var(--verticalBorders-xl) / var(--projectAspectRatio))`};
+    !small
+      ? "auto"
+      : "calc(var(--verticalBorders-xl) / var(--projectAspectRatio) * 0.5)"};
   width: 100%;
 
   ${({ small }) =>

@@ -22,8 +22,14 @@ const GlobalStyle = createGlobalStyle`
   };
 
   :root {
-    --bodyBackgroundColor: antiquewhite;
+    --bodyBgColor: antiquewhite;
+    --bodyBgColorDark: #1F2937;
+    
+    --textColor: #1F2937;
+    --textColorDark: #F9FAFB;
+
     --borderColor: rgba(0, 0, 0, 0.15);
+    
     --maxWidth-xl: 1650px;
     --verticalBorders-xl: 800px;
     --projectAspectRatio: calc(1440 / 1024);
@@ -44,14 +50,24 @@ const GlobalStyle = createGlobalStyle`
     /* font-size: 85%; // test ui scaling */
     font-family: 'DroidSansMono', sans-serif;
   }
-  
+
   body {
     overscroll-behavior: none;
     padding: 0 1.3rem;
-    background-color: var(--bodyBackgroundColor);
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease;
+
+    &.light-mode {
+      background-color: var(--bodyBgColor);  
+      color: var(--textColor);
+    }
+
+    &.dark-mode {
+      background-color: var(--bodyBgColorDark);
+      color: var(--textColorDark);
+    }
   }
 
   h1, h3 {
