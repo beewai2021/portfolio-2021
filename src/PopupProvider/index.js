@@ -1,4 +1,6 @@
 import React from "react"
+import { throttle } from "throttle-debounce"
+
 import { PROJECT_DATA } from "../project_data"
 
 const initialState = {
@@ -57,17 +59,17 @@ const PopupProvider = ({ children }) => {
     })
   }
 
-  const previousProject = () => {
+  const previousProject = throttle(270, () => {
     dispatch({
       type: "PREV_PROJECT",
     })
-  }
+  })
 
-  const nextProject = () => {
+  const nextProject = throttle(270, () => {
     dispatch({
       type: "NEXT_PROJECT",
     })
-  }
+  })
 
   const togglePopup = () => {
     dispatch({
